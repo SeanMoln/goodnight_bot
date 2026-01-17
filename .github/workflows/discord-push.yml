@@ -1,0 +1,24 @@
+name: Discord Scheduled Push
+
+on:
+  schedule:
+    - cron: "0 13 * * *"  # 台灣每天 21:00 (UTC+8)
+  workflow_dispatch: {}
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message to Discord webhook
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "Missing DISCORD_WEBHOOK_URL secret"
+            exit 1
+          fi
+
+          MESSAGE="📢 測試：$(date -u '+%Y-%m-%d %H:%M UTC')"
+          curl -sS -H "Content-Type: application/json" \
+            -d "{\"content\":\"$MESSAGE\"}" \
+            "$DISCORD_WEBHOOK_URL"
