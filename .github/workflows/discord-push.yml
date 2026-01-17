@@ -2,7 +2,7 @@ name: Discord Scheduled Push
 
 on:
   schedule:
-    - cron: "0 13 * * *"  # 台灣每天 21:00 (UTC+8)
+     - cron: "50 0 * * *"  # 台灣每天 21:00 (UTC+8)
   workflow_dispatch: {}
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
             exit 1
           fi
 
-          MESSAGE="📢 測試：$(date -u '+%Y-%m-%d %H:%M UTC')"
+          MESSAGE="📢 @everyone 距離公會王還有十分鐘，快上線!!：$(date -u '+%Y-%m-%d %H:%M UTC')"
           curl -sS -H "Content-Type: application/json" \
             -d "{\"content\":\"$MESSAGE\"}" \
             "$DISCORD_WEBHOOK_URL"
