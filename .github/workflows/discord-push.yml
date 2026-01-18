@@ -18,7 +18,7 @@ jobs:
             exit 1
           fi
 
-          MESSAGE="📢 距離公會王還有五十分鐘，快上線!!：$(TZ=Asia/Taipei date '+%Y-%m-%d %H:%M %Z')"
+          MESSAGE="📢 距離公會王還有十分鐘，快上線!!：$(TZ=Asia/Taipei date '+%Y-%m-%d %H:%M %Z')"
           curl -sS -H "Content-Type: application/json" \
             -d "{\"content\":\"$MESSAGE\"}" \
             "$DISCORD_WEBHOOK_URL"
