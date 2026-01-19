@@ -1,9 +1,9 @@
 name: Discord Scheduled Push
 
 on:
-  schedule:
-     - cron: "50 12 * * *" 
-  workflow_dispatch: {}
+  # schedule:
+  #    - cron: "50 12 * * *" 
+  # workflow_dispatch: {}
 
 jobs:
   push:
